@@ -27,6 +27,14 @@
 #define kPGLocationDistanceFilterKey @"distanceFilter"
 #define kPGLocationFrequencyKey @"frequency"
 
+//Edited by kingalione: START
+#define SYSTEM_VERSION_EQUAL_TO(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
+#define SYSTEM_VERSION_GREATER_THAN(v)              ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)
+#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v)     ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
+//Edited by kingalione: END
+
 #pragma mark -
 #pragma mark Categories
 
@@ -56,6 +64,13 @@
 - (void)pluginInitialize
 {
     self.locationManager = [[CLLocationManager alloc] init];
+    
+    		//Edited by kingalione: START
+            if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"9.0")) {
+                self.locationManager.allowsBackgroundLocationUpdates = YES;
+            }
+        //Edited by kingalione: END
+        
     self.locationManager.delegate = self; // Tells the location manager to send updates to this object
     __locationStarted = NO;
     __highAccuracyEnabled = NO;
