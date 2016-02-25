@@ -18,11 +18,12 @@
   under the License.
 -->
 
+<!-- Modificado desde la vers. org.apache.cordova.geolocation 0.3.12 de nov./2015 --> 
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
 xmlns:rim="http://www.blackberry.com/ns/widgets"
 xmlns:android="http://schemas.android.com/apk/res/android"
-           id="cordova-plugin-geolocation"
-      version="2.1.1-dev">
+           id="settingconsultoria.cordova.plugins.geolocation"
+      version="0.2">
 
     <name>Geolocation</name>
     <description>Cordova Geolocation Plugin</description>
